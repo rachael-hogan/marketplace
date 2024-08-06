@@ -10,16 +10,16 @@ import {fetchTasks} from "../api/api";
 import {Button} from "@mui/material";
 
 function createData(
-  name: string,
-  calories: number,
-  fat: number,
-  carbs: number,
-  protein: number,
+  name,
+  calories,
+  fat,
+  carbs,
+  protein,
+
 ) {
   return { name, calories, fat, carbs, protein };
 }
 
-// @ts-ignore
 const getTasks = async () => {
   try {
    const tasks = await fetchTasks();
@@ -37,7 +37,6 @@ const rows = [
 ];
 
 export default function JobTable() {
-  // @ts-ignore
   return (
       <>
     <TableContainer component={Paper}>

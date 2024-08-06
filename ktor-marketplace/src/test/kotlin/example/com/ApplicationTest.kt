@@ -1,6 +1,6 @@
-package example.com
+package marketplace.com
 
-import example.com.plugins.*
+import marketplace.com.plugins.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.http.*

@@ -1,4 +1,4 @@
-package example.com.plugins
+package marketplace.com.plugins
 
 import io.ktor.http.*
 import io.ktor.server.application.*

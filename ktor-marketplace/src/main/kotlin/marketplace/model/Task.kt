@@ -1,4 +1,4 @@
-package com.example.model
+package marketplace.com.model
 
 import kotlinx.serialization.Serializable
 

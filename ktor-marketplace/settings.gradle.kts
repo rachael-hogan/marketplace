@@ -1,1 +1,1 @@
-rootProject.name = "com.example.ktor-marketplace"
+rootProject.name = "marketplace.com.ktor-marketplace"
