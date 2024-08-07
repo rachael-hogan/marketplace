@@ -24,3 +24,14 @@ export async function fetchJobs() {
     );
     return resp.json();
 }
+
+export async function fetchActiveJobs() {
+    const resp = await fetch(
+        "http://0.0.0.0:8080/tasks/active",
+        {
+            headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},
+            method: 'GET'
+        }
+    );
+    return resp.json();
+}

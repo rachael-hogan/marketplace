@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {fetchJobs, fetchRecentJobs} from "../api/api";
+import {fetchActiveJobs, fetchRecentJobs} from "../api/api";
 import {Grid, ToggleButton, ToggleButtonGroup} from "@mui/material";
 import {useEffect, useState} from "react";
 import * as PropTypes from "prop-types";
@@ -9,11 +9,11 @@ import Button from "@mui/material/Button";
 
 export default function JobTable() {
   const [jobs, setJobs] = useState([]);
-  const [jobFilter, setJobFilter] = React.useState('all');
+  const [jobFilter, setJobFilter] = React.useState('active');
 
   const getJobs = async (setJobs, type) => {
     try {
-      const jobs = type === 'recent' ? await fetchRecentJobs() : await fetchJobs();
+      const jobs = type === 'recent' ? await fetchRecentJobs() : await fetchActiveJobs();
       setJobs(jobs); // Store the fetched jobs in state
     } catch (error) {
       console.log(error);

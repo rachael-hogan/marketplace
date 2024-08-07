@@ -8,9 +8,10 @@ enum class Priority {
 }
 
 @Serializable
-data class Task(
+data class Job(
     val name: String,
     val description: String,
-    val priority: Priority,
-    val createdAt: String
+    val requirements: String,
+    val jobDateTime: String,
+    val createdAt: String,
 )
