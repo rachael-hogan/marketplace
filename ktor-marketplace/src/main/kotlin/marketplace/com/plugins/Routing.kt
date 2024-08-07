@@ -4,7 +4,7 @@ import io.ktor.server.application.*
 import io.ktor.server.http.content.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
-import marketplace.com.model.TaskRepository
+import marketplace.model.TaskRepository
 
 fun Application.configureRouting() {
     routing {
@@ -14,7 +14,7 @@ fun Application.configureRouting() {
         route("/tasks") {
             get {
                 // get all jobs
-                val jobs = TaskRepository.allTasks()
+                val jobs = TaskRepository.getRecentJobs(10)
                 call.respond(jobs)
             }
 
