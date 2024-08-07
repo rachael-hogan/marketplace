@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 
 export default function JobCard( {job} ) {
     return (
-        <Card sx={{ minWidth: 275, marginBottom: 2 }}>
+        <Card sx={{ minWidth: 275, marginBottom: 2 }} key={job.id}>
             <CardContent>
                 <Typography variant="h5" component="div">
                     {job.title}

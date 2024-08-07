@@ -14,16 +14,19 @@ fun Application.configureRouting() {
         route("/tasks") {
             get {
                 // get all jobs
-                val jobs = TaskRepository.getRecentJobs(10)
+                val jobs = TaskRepository.allTasks()
                 call.respond(jobs)
             }
 
             get("/recent") {
-//                call.respond(recentJobs)
+//              // get all jobs
+                val jobs = TaskRepository.getRecentJobs(10)
+                call.respond(jobs)
             }
-            get("/active") {
-                // call.response(activeJobs)
-            }
+//            get("/active") {
+//                val jobs = TaskRepository.activeJobs()
+//                call.respond(jobs)
+//            }
 
             post {
 //                try {
