@@ -4,8 +4,13 @@ import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import {Drawer} from "@mui/material";
+import BidForm from "./bidForm";
+import * as PropTypes from "prop-types";
+import {useState} from "react";
 
-export default function JobCard( {job} ) {
+export default function JobCard({job}) {
+    const [drawerOpen, setDrawerOpen] = useState(false);
     return (
         <Card sx={{ minWidth: 275, marginBottom: 2 }} key={job.id}>
             <CardContent>
@@ -23,8 +28,12 @@ export default function JobCard( {job} ) {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small">Learn More</Button>
+                <Button size="small" variant="contained" color="secondary" onClick={() => {setDrawerOpen(true)}}>Add Bid</Button>
             </CardActions>
+            <Drawer open={drawerOpen} onClose={() => {setDrawerOpen(false)}}>
+                <BidForm></BidForm>
+            </Drawer>
         </Card>
     );
 }
+

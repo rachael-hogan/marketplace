@@ -1,5 +1,5 @@
 import React from 'react';
-import JobTable from './components/jobTable'
+import JobTable from './components/jobLayout'
 import './App.css';
 
 function App() {
