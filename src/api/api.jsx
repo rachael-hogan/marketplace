@@ -25,6 +25,17 @@ export async function fetchJobs() {
     return resp.json();
 }
 
+export async function getBids(jobDescription) {
+    const resp = await fetch(
+        `http://0.0.0.0:8080/bids/${jobDescription}`,
+        {
+            headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},
+            method: 'GET',
+        }
+    );
+    return resp.json();
+}
+
 export async function fetchActiveJobs() {
     const resp = await fetch(
         "http://0.0.0.0:8080/jobs/active",
@@ -62,7 +73,7 @@ export async function createJob(job) {
     }
 }
 
-export async function createBid(bid) {
+export async function createBid(bid, jobDescription) {
     try {
         const resp = await fetch(
             "http://0.0.0.0:8080/bids",
@@ -71,7 +82,10 @@ export async function createBid(bid) {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(bid)
+                body: {
+                    'bid': JSON.stringify(bid),
+                    'jobDescription': jobDescription
+                }
             }
         );
         if (!resp.ok) {

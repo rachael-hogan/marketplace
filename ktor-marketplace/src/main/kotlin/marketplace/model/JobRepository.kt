@@ -70,4 +70,14 @@ object JobRepository {
         }
         return emptyList()
     }
+
+    fun getBids(jobName: String?): List<Bid> {
+        val job = jobs.find { it.description == jobName }
+        job?.let {
+            return it.bids
+        } ?: run {
+            println("Job not found: $jobName")
+        }
+        return emptyList()
+    }
 }

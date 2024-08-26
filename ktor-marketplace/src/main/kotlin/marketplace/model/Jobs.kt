@@ -26,6 +26,12 @@ data class Bid(
     val bidTime: String
 )
 
+@Serializable
+data class BidRequest(
+    val bid: Bid,
+    val jobDescription: String
+)
+
 val mockedData = mutableListOf(
     Job(
         category = "cleaning",

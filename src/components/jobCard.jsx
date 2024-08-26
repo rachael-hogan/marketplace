@@ -4,14 +4,16 @@ import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import {Drawer} from "@mui/material";
+import {Box, Dialog, Drawer, Modal} from "@mui/material";
 import BidForm from "./bidForm";
-import * as PropTypes from "prop-types";
 import {useState} from "react";
+import BidModal from "./bidModal";
 
 export default function JobCard({job}) {
-    const [drawerOpen, setDrawerOpen] = useState(false);
+    const [drawerOpen, setAddBidDrawerOpen] = useState(false);
+    const [modalOpen, setBidModalOpen] = useState(false);
     return (
+        <>
         <Card sx={{ minWidth: 275, marginBottom: 2 }} key={job.id}>
             <CardContent>
                 <Typography variant="h5" component="div">
@@ -28,12 +30,17 @@ export default function JobCard({job}) {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small" variant="contained" color="secondary" onClick={() => {setDrawerOpen(true)}}>Add Bid</Button>
+                <Button size="small" variant="contained" color="primary" onClick={() => {setAddBidDrawerOpen(true)}}>Add Bid</Button>
+                <Button size="small" variant="outlined" color="primary" onClick={() => {setBidModalOpen(true)}}>Show Bids</Button>
             </CardActions>
-            <Drawer open={drawerOpen} onClose={() => {setDrawerOpen(false)}}>
-                <BidForm></BidForm>
+            <Drawer open={drawerOpen} onClose={() => {setAddBidDrawerOpen(false)}}>
+                <BidForm jobDescription={job.description}></BidForm>
             </Drawer>
         </Card>
+            <Dialog open={modalOpen} onClose={() => {setBidModalOpen(false)}} >
+                <BidModal jobDescription={job.description}></BidModal>
+            </Dialog>
+    </>
     );
 }
 

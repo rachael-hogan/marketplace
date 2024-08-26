@@ -40,7 +40,7 @@ const JobView = ( {jobs} ) => (
     <Grid container spacing={2} justifyContent="center" style={{paddingLeft: 16, paddingRight: 16}}>
       {jobs.map((job) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={job.id}>
-            <JobCard job={job} />
+            <JobCard job={job}/>
           </Grid>
       ))}
     </Grid>

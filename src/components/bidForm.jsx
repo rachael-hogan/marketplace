@@ -4,7 +4,7 @@ import * as PropTypes from "prop-types";
 import {createBid, createJob} from "../api/api";
 import {delayHideSpinner} from "../utils/utils";
 
-const BidForm = () => {
+const BidForm = ({jobDescription}) => {
     const [name, setName] = useState('');
     const [amount, setAmount] = useState('');
 
@@ -21,7 +21,7 @@ const BidForm = () => {
         // Pass the bid to the parent component or handle it here
         try {
             console.log("newBid: ", bid);
-            await createBid(bid);
+            await createBid(bid, jobDescription);
         } catch (error) {
             console.error("Error saving bid: ", error);
         } finally {
@@ -63,6 +63,6 @@ const BidForm = () => {
 };
 
 BidForm.propTypes = {
-    isOpen: PropTypes.any
+    jobDescription: PropTypes.string
 };
 export default BidForm;

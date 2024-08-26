@@ -8,6 +8,7 @@ import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import marketplace.model.Bid
+import marketplace.model.BidRequest
 import marketplace.model.Job
 import marketplace.model.JobRepository
 
@@ -46,10 +47,19 @@ fun Application.configureRouting() {
             }
         }
         route("/bids") {
+            get("/{jobDescription}") {
+                val jobDescription= call.parameters["jobDescription"]
+                // get all bids
+                val jobs = JobRepository.getBids(jobDescription)
+                call.respond(jobs)
+            }
             post {
                 try {
-                    val bid = call.receive<Bid>()
-                    val newJob = JobRepository.addBid("painting2", bid)
+                    val bidRequest = call.receive<BidRequest>()
+                    val bid = bidRequest.bid
+                    val jobDescription = bidRequest.jobDescription
+                    val newJob = JobRepository.addBid(jobDescription, bid)
+                    call.respond(newJob)
                     call.respond(newJob)
                 } catch (ex: IllegalStateException) {
                     call.respond(HttpStatusCode.BadRequest)
