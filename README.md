@@ -1,46 +1,97 @@
-# Getting Started with Create React App
+# MarketPlace - Contract Jobs Auction Platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**MarketPlace** is a web application that allows users to post contract jobs to be performed. The jobs are bid on in an auction format similar to eBay, but for jobs/tasks instead of products. This repository contains both the frontend (React) and backend (Kotlin with Ktor) components of the application.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+1. [Prerequisites](#prerequisites)
+2. [Installation](#installation)
+3. [Running the Application Locally](#running-the-application-locally)
+4. [Project Structure](#project-structure)
 
-### `npm start`
+## Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+To run this project locally, you will need to have the following installed on your machine:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **Node.js** (v14.x or later)
+- **npm** (v6.x or later) or **yarn** (v1.x or later)
+- **JDK** (Java Development Kit) (v11 or later)
+- **Gradle** (v6.x or later)
 
-### `npm test`
+## Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 1. Clone the repository
 
-### `npm run build`
+```bash
+git clone https://github.com/yourusername/marketplace.git
+cd marketplace
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 2. Install Frontend Dependencies
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Navigate to the `frontend` directory and install the required packages:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+cd frontend
+npm install
+```
 
-### `npm run eject`
+### 2. Install Backend Dependencies
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Navigate to the backend directory:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+cd ../backend
+./gradlew build
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Running the Application Locally
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### 1. Start the Backend Server
 
-## Learn More
+To start the Kotlin backend server:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Navigate to the `backend` directory if you haven't already:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   ```bash
+   cd backend
+   ```
+ 2. Run the server using Gradle:
+
+    ``` bash
+    ./gradlew run
+    ```
+    The server will start on http://localhost:8080 by default.
+
+### 2. Start the Frontend Development Server
+To start the React frontend development server:
+
+1 . Navigate to the frontend directory:
+   ``` bash
+    cd ../frontend
+   ```
+2. Start the development server:
+   ``` bash
+    npm start
+   ```
+The frontend will start on http://localhost:3000 by default.
+
+### 3. Access the Application
+   Once both the frontend and backend servers are running, you can access the application by opening your web browser and navigating to:
+http://localhost:3000
+
+## Project Structure
+
+```php
+marketplace/
+├── frontend/    # React frontend application
+│   ├── public/  # Static files
+│   ├── src/     # Source files for React components, hooks, and state management
+│   ├── package.json  # npm/yarn dependencies and scripts
+│   └── ...
+├── backend/     # Kotlin backend application
+│   ├── src/     # Source files for Ktor routes, services, and models
+│   ├── build.gradle.kts  # Gradle build script
+│   └── ...
+└── README.md  
+```
